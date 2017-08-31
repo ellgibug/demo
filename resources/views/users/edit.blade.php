@@ -6,7 +6,12 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="{{route('users.index')}}">Edit User</a>
+                    @role('admin')
+                        <a href="{{route('users.index')}}">Edit User</a>
+                    @endrole
+                    @role('user')
+                        Profile
+                    @endrole
                 </div>
                 <div class="panel-body">
                     <form action="{{route('users.update', $user->id)}}" method="post">
@@ -16,6 +21,7 @@
                             <label for="name">Name*</label>
                             <input type="text" class="form-control" id="name" name="name" required value="{{$user->name}}">
                         </div>
+                        @role('admin')
                         <div class="form-check">
                             <label class="form-check-label">
                                 @foreach($roles as $role)
@@ -23,6 +29,7 @@
                                 @endforeach
                             </label>
                         </div>
+                        @endrole
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

@@ -22,12 +22,6 @@ class RolesTableSeeder extends Seeder
             'display_name' => 'general authorized user',
             'description' => 'allowed to leave comments under the posts',
         ]);
-
-        DB::table('roles')->insert([
-            'name' => 'advanced_user',
-            'display_name' => 'the next level authorized user',
-            'description' => 'allowed to leave comments under the posts and create posts',
-        ]);
         
     }
 }

@@ -52,6 +52,11 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @role('user')
+                                    <li>
+                                        <a href="{{ route('users.edit', Auth::user()->id) }}">Edit profile</a>
+                                    </li>
+                                    @endrole
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
