@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -13,7 +15,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view('permissions.index');
+        $permissions = Permission::all();
+        return view('permissions.index', compact('permissions'));
     }
 
     /**
@@ -23,7 +26,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('permissions.create');
     }
 
     /**
@@ -34,7 +37,8 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Permission::create($request->except(['_token']));
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -56,7 +60,10 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::find($id);
+
+        return view('permissions.edit', compact('permission'));
+
     }
 
     /**
@@ -68,7 +75,16 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permission = Permission::find($id);
+
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $permission->name = $request->name;
+        $permission->save();
+        
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -79,6 +95,7 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('permissions')->where('id', $id)->delete();
+        return back();
     }
 }
