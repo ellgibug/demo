@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
-use App\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        return view('posts.index');
     }
 
     /**
@@ -60,16 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        if(!$user->hasRole('admin')){
-            $roles = Role::all()->where('name', '!=', 'admin');
-            $role_user = $user->roles()->pluck('id', 'id')->toArray();
-
-            return view('users.edit', compact('user', 'roles', 'role_user'));
-        } else {
-            return 'You can not edit this user.';
-        }
+        //
     }
 
     /**
@@ -81,24 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
-        $user->name = $request->name;
-        $user->save();
-
-        DB::table('role_user')->where('user_id', $id)->delete();
-
-        if($request->roles){
-            foreach ($request->roles as $key=>$value) {
-                $user->attachRole($value);
-            }
-        }
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -109,7 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('users')->where('id', $id)->delete();
-        return back();
+        //
     }
 }
