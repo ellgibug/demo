@@ -18,7 +18,7 @@ class RolesTableSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'simple_user',
+            'name' => 'user',
             'display_name' => 'general authorized user',
             'description' => 'allowed to leave comments under the posts',
         ]);

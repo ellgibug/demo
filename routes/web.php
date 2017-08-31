@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/confirm/{id}/{token}', 'Auth\RegisterController@confirm');
+
+Route::resource('users', 'UserController');
+Route::resource('roles', 'RoleController');
+Route::resource('permissions', 'PermissionController');
