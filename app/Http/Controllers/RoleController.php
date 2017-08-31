@@ -58,7 +58,11 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        $role_permission = $role->perms()->pluck('id', 'id')->toArray();
+        
+        return view('roles.show', compact('role', 'permissions', 'role_permission'));
     }
 
     /**

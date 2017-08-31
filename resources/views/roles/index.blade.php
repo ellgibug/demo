@@ -23,7 +23,7 @@
                         @foreach($roles as $role)
                         <tr>
                             <th scope="row">{{$role->id}}</th>
-                            <td>{{$role->name}}</td>
+                            <td><a href="{{route('roles.show', $role->id)}}">{{$role->name}}</a></td>
                             <td>
                                 @if($role->name!='user' AND $role->name!='admin')
                                 <a href="{{route('roles.edit', $role->id)}}">Edit</a>
