@@ -1,19 +1,35 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    @include('layouts.header')
+    <style>
+        header {
+            background: url(https://www.motto.net.ua/pic/201410/2560x1600/motto.net.ua-85478.jpg) no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
 
-@section('content')
+<body>
 
-<div class="container">
-
-
-    <img src="http://tr.naturewallpaperfree.com/lite/hayvanlar-kopekler/doga-duvar-kagidi-1024x600-3736-d8353fcc.jpg" class="rounded mx-auto d-block" style="position: relative">
-    <div style="position: absolute; top:300px; left: 500px"  >
-        <h1 class="display-3 text-center text-light">Hello, World!</h1>
-        <p class="lead text-center text-light">This is a demo Laravel project.</p>
-    </div>
+<header>
+    @include('layouts.navbar')
+</header>
 
 
 
 
-</div>
 
-@endsection
+
+
+
+
+
+
+
+
+@include('layouts.scripts')
+
+</body>
+</html>
