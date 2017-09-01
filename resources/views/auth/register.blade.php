@@ -51,6 +51,18 @@
             </div>
         </div>
         <div class="form-group row">
+            @foreach($avatars as $avatar)
+            <div class="form-check form-check-inline col" >
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="avatar" value="{{$avatar->id}}" required>
+                    <img src="{{$avatar->path}}" alt="{{$avatar->name}}" class="img-thumbnail">
+                </label>
+
+            </div>
+            @endforeach
+        </div>
+        <div class="form-group row">
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary">Register</button>
             </div>
@@ -62,5 +74,4 @@
         </div>
     @endif
 </div>
-
 @endsection

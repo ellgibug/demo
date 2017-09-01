@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Avatar;
 use App\Notifications\RegisteredUser;
 use App\User;
 use App\Role;
@@ -41,6 +42,12 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        $avatars = Avatar::all()->where('name', '!=', 'crown');
+        return view('auth.register', compact('avatars'));
     }
 
     public function confirm($id, $token)
@@ -83,6 +90,7 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'avatar_id'=>$data['avatar'],
             'password' => bcrypt($data['password']),
             'token' => str_random(16),
         ]);

@@ -27,7 +27,7 @@
                 <form action="{{route('permissions.destroy', $permission->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
-                    <button type="submit" class="btn-link" disabled >Delete</button>
+                    <button type="submit" class="btn-link"  >Delete</button>
                 </form>
             </td>
         </tr>
