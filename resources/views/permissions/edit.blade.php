@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-5">New permission</h1>
+    <h1 class="mb-5">Edit permission</h1>
     <form method="POST" action="{{route('permissions.update', $permission->id)}}">
         {{ csrf_field() }}
         {{method_field('PATCH')}}

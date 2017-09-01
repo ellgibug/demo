@@ -1,41 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a href="{{route('roles.index')}}">Role</a>
-                </div>
-                <div class="panel-body">
-                    <table class="table">
-                        <tr>
-                            <th scope="row">Name</th>
-                            <td>{{$role->name}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Display name</th>
-                            <td>{{$role->display_name}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Description</th>
-                            <td>{{$role->description}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Permissions</th>
-                            <td>
-                                @foreach($permissions as $permission)
-                                    @if(in_array($permission->id, $role_permission))
-                                        {{$permission->name}}<br>
-                                    @endif
-                                @endforeach
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+    <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{$role->name}}</dd>
+
+        <dt class="col-sm-3">Display name</dt>
+        <dd class="col-sm-9">{{$role->display_name}}</dd>
+
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">{{$role->description}}</dd>
+
+        <dt class="col-sm-3">Permissions</dt>
+        <dd class="col-sm-9">
+            @foreach($permissions as $permission)
+                @if(in_array($permission->id, $role_permission))
+                    {{$permission->name}}
+                @endif
+            @endforeach
+        </dd>
+    </dl>
 </div>
+
 @endsection

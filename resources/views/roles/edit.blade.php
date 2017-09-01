@@ -2,36 +2,45 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a href="{{route('roles.index')}}">Edit Role</a>
-                </div>
-                <div class="panel-body">
+    <h1 class="mb-5">Edit role</h1>
                     <form action="{{route('roles.update', $role->id)}}" method="post">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
-                        <div class="form-group">
-                            <label for="name">Name*</label>
-                            <input type="text" class="form-control" id="name" name="name" required value="{{$role->name}}">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name*</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" name="name" value="{{$role->name}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="display_name">Display Name</label>
-                            <input type="text" class="form-control" id="display_name" name="display_name" value="{{$role->display_name}}">
+                        <div class="form-group row">
+                            <label for="display_name" class="col-sm-2 col-form-label">Display name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="display_name" name="display_name" value="{{$role->display_name}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" class="form-control" id="description" name="description" value="{{$role->description}}">
+                        <div class="form-group row">
+                            <label for="description" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="description" name="description" value="{{$role->description}}">
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                @foreach($permissions as $permission)
-                                <input class="form-check-input" type="checkbox" {{in_array($permission->id, $role_permission) ? "checked" : ""}} value="{{$permission->id}}" name="permissions[]"> {{$permission->name}} <br>
-                                @endforeach
-                            </label>
+                        <div class="form-group row">
+                            <div class="col-sm-2">Permissions</div>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        @foreach($permissions as $permission)
+                                        <input class="form-check-input" type="checkbox" {{in_array($permission->id, $role_permission) ? "checked" : ""}} value="{{$permission->id}}" name="permissions[]"> {{$permission->name}} <br>
+                                        @endforeach
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
