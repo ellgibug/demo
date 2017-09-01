@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5" style="box-shadow: 0 0 35px #dae0e6 ">
+<nav class="navbar navbar-expand-lg {{ ! Request::is('/') ? 'navbar-light bg-light mb-5' : '' }}">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

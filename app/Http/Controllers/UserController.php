@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Avatar;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:admin')->except('edit');
+        $this->middleware('role:admin')->except(['edit', 'update']);
     }
 
     /**
@@ -23,7 +24,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', compact('users'));
+        $avatars = Avatar::all();
+        return view('users.index', compact('users', 'avatars'));
     }
 
     /**
@@ -68,11 +70,13 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
+        $avatars = Avatar::all()->where('name', '!=', 'crown');
+        
         if(!$user->hasRole('admin')){
             $roles = Role::all()->where('name', '!=', 'admin');
             $role_user = $user->roles()->pluck('id', 'id')->toArray();
 
-            return view('users.edit', compact('user', 'roles', 'role_user'));
+            return view('users.edit', compact('user', 'roles', 'role_user', 'avatars'));
         } else {
             return 'You can not edit this user.';
         }
@@ -87,6 +91,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $user = User::find($id);
 
         $this->validate($request, [
@@ -94,17 +99,21 @@ class UserController extends Controller
         ]);
 
         $user->name = $request->name;
+        $user->avatar_id = $request->avatar;
         $user->save();
 
-        DB::table('role_user')->where('user_id', $id)->delete();
-
         if($request->roles){
+            DB::table('role_user')->where('user_id', $id)->delete();
             foreach ($request->roles as $key=>$value) {
                 $user->attachRole($value);
             }
         }
+        if($user->hasRole('admin')){
+            return redirect()->route('users.index');
+        } else {
+            return back();
+        }
 
-        return redirect()->route('users.index');
     }
 
     /**

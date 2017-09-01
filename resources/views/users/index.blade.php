@@ -18,7 +18,10 @@
             @foreach($users as $user)
                 <tr>
                     <th scope="row">{{$user->id}}</th>
-                    <td>{{$user->name}}</td>
+                    <td>
+                        <img src="{{$user->avatar->path}}" alt="user_preview" class="rounded-circle" width="4.5%" height="10%">
+                        {{$user->name}}
+                    </td>
                     <td>
                         @foreach($user->roles as $role)
                             {{$role->name}}<br>

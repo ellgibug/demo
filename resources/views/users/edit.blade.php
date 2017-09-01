@@ -1,15 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-
-
-
     <h1 class="mb-3">Profile</h1>
-
     <div class="row">
         <div class="col-sm-4">
-            <img src="/public/images/puppy.jpg" alt="puppy" class="img-thumbnail">
+            <img src="{{$user->avatar->path}}" alt="puppy" class="img-thumbnail">
         </div>
         <div class="col-sm-8">
             <form action="{{route('users.update', $user->id)}}" method="post">
@@ -19,6 +16,16 @@
                     <label for="name" class="col-sm-2 col-form-label">Name*</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="avatar" name="avatar">
+                            @foreach($avatars as $avatar)
+                            <option value="{{$avatar->id}}" @if($user->avatar->id == $avatar->id) selected @endif>{{$avatar->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 @role('admin')
@@ -43,10 +50,6 @@
             </form>
         </div>
     </div>
-
-
-
-
-                </div>
+</div>
 
 @endsection
