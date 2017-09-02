@@ -3,7 +3,7 @@
 <head>
    @include('layouts.header')
 </head>
-<body style="background: red">
+<body>
 
     @include('layouts.navbar')
 

@@ -1,0 +1,53 @@
+body{
+    color: black;
+}
+.grey{
+    color: #2c3036;
+}
+.full{
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+    background-color: black;
+}
+.full-70{
+    height: 65vh;
+    background-size: cover;
+    position: relative;
+}
+.full-30{
+    height: 35vh;
+    background-size: cover;
+    z-index: 1;
+    background: #000;
+}
+.full-50{
+    height: 50vh;
+    background-size: cover;
+    background: #000;
+}
+.two{
+    background: url(https://www.motto.net.ua/pic/201410/2560x1600/motto.net.ua-85478.jpg) no-repeat center center fixed;
+}
+.one{
+    background: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-178622.jpg) no-repeat center center fixed;
+}
+.three{
+    background: url(https://mota.ru/upload/wallpapers/source/2013/02/21/15/00/34776/AAHbclsSL6.jpg) no-repeat center center fixed;
+}
+.text-container{
+    width: 50%;
+    margin: 0 auto;
+}
+.fixed{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 1);
+    height: auto;
+    padding: 15px 0;
+    width: 100%;
+}
+.padding25{
+    padding-top: 20vh;
+}
