@@ -12,6 +12,9 @@
         <li class="nav-item">
             <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="{{route('users.index')}}">Users</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('posts*') ? 'active' : '' }}" href="{{route('posts.index')}}">Posts</a>
+        </li>
     </ul>
 </div>
 

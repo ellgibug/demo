@@ -1,5 +1,6 @@
 body{
     color: black;
+    background-color: black;
 }
 .grey{
     color: #2c3036;
@@ -8,7 +9,7 @@ body{
     height: 100vh;
     background-size: cover;
     position: relative;
-    background-color: black;
+
 }
 .full-70{
     height: 65vh;
@@ -19,12 +20,12 @@ body{
     height: 35vh;
     background-size: cover;
     z-index: 1;
-    background: #000;
+
 }
 .full-50{
     height: 50vh;
     background-size: cover;
-    background: #000;
+
 }
 .two{
     background: url(https://www.motto.net.ua/pic/201410/2560x1600/motto.net.ua-85478.jpg) no-repeat center center fixed;

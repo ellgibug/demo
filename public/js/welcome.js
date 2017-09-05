@@ -13,4 +13,4 @@ jQuery(function($) {
             menuTop.css('display','none');
         }
     });
-});
+})

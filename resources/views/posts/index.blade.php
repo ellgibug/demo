@@ -3,57 +3,28 @@
 @section('content')
 
     <div class="container">
-        <h1 class="mt-5 mb-5">Posts</h1>
+        <div class="row">
+            <a href="{{route('posts.create')}}" class="btn btn-outline-primary btn-sm mb-2 ml-auto mr-3">Add new post</a>
+        </div>
+        @foreach($posts as $post)
+            <h4><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></h4>
+            <p><strong>{{$post->user->name}}</strong></p>
+            <p class="text-justify">
+                {{\strlen($post->body) > 1000 ? \substr($post->body, 0, 1000).' (view more...)' : $post->body}}
+            </p>
+        <hr>
+        @endforeach
 
-        <table class="table table-inverse">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
+                        {{--<a href="{{route('edit.blade.php', $post->id)}}">Edit</a>--}}
+                    {{----}}
+                        {{--<form action="{{route('posts.destroy', $post->id)}}" method="post">--}}
+                            {{--{{csrf_field()}}--}}
+                            {{--{{method_field('DELETE')}}--}}
+                            {{--<button type="submit" class="btn-link">Delete</button>--}}
+                        {{--</form>--}}
+
+
+
     </div>
 
 @endsection
-

@@ -25,3 +25,26 @@ Route::resource('posts', 'PostController');
 Route::resource('users', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
+
+
+Route::get('/ajax', function(\Illuminate\Http\Request $request){
+    $option = $request->option;
+    switch ($option) {
+        case 1:
+            return view('ajax.one');
+            break;
+        case 2:
+            return view('ajax.two');
+            break;
+        case 3:
+            return view('ajax.three');
+            break;
+        default:
+            return 'No view found';
+            break;
+    }
+})->name('get-ajax');
+
+Route::get('/example', function(){
+    return view('ajax.ajax');
+})->name('example');

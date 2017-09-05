@@ -34,5 +34,5 @@ class User extends Authenticatable
         return $this->hasOne('App\Avatar', 'id', 'avatar_id');
     }
 
-
+    
 }
