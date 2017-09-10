@@ -14,17 +14,5 @@
             </p>
         <hr>
         @endforeach
-
-                        {{--<a href="{{route('edit.blade.php', $post->id)}}">Edit</a>--}}
-                    {{----}}
-                        {{--<form action="{{route('posts.destroy', $post->id)}}" method="post">--}}
-                            {{--{{csrf_field()}}--}}
-                            {{--{{method_field('DELETE')}}--}}
-                            {{--<button type="submit" class="btn-link">Delete</button>--}}
-                        {{--</form>--}}
-
-
-
     </div>
-
 @endsection

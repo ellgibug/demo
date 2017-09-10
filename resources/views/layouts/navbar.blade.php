@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light{{ Request::is('/') ? 'fixed-top' : '' }}">
+<nav class="navbar navbar-expand-lg {{ Request::is('/') ? 'fixed-top navbar-dark bg-dark' : 'bg-light navbar-light' }}">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -7,6 +7,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            {{--@if(Request::is('/'))--}}
+            {{--<ul class="navbar-nav mr-auto">--}}
+                {{--<li class="nav-item" data-menuanchor="firstPage"><a class="nav-link" href="#firstPage">First slide</a></li>--}}
+                {{--<li class="nav-item" data-menuanchor="secondPage"><a class="nav-link" href="#secondPage">Second slide</a></li>--}}
+                {{--<li class="nav-item" data-menuanchor="3rdPage"><a class="nav-link" href="#3rdPage">Third slide</a></li>--}}
+                {{--<li class="nav-item" data-menuanchor="4thpage"><a class="nav-link" href="#4thpage">Fourth slide</a></li>--}}
+            {{--</ul>--}}
+            {{--@endif--}}
+
             <ul class="navbar-nav ml-auto">
                 @if (Auth::guest())
                     <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
